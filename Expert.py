@@ -3,6 +3,7 @@
 # 49269 Mário Gil Oliveira
 # 46261 Margarida Rolo
 
+
 class Expert:
     def __init__(self, name, zone, skills, rating, rate, date, hour, earnings):
         """
@@ -86,3 +87,13 @@ class Expert:
                str(self.getDate()) + ', ' +\
                str(self.getHour()) + ', ' +\
                str(self.getEarnings())
+
+    def __eq__(self, rhs):
+        """
+        Compares if one Expert is equal to another
+        """
+
+    def __lt__(self, rhs):
+        """
+        Compares the best of two objects
+        """
