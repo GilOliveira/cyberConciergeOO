@@ -46,7 +46,7 @@ class Expert:
     def getRating(self):
         """
         Returns the zone of the expert.
-        Ensures: an int bewteen 0 and 5, the star rating of the expert.
+        Ensures: an int between 0 and 5, the star rating of the expert.
         """
         return self._rating
 
