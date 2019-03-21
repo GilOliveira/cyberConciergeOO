@@ -5,7 +5,7 @@
 # 46261 Margarida Rolo
 
 
-class Clients:
+class Client:
     def __init__(self, name, zone, date, hour, max_hourly_charge, min_rating, required_expertise, duration):
         """
         Initializes a Client object
