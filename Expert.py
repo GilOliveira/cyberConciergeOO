@@ -5,21 +5,21 @@
 
 
 class Expert:
-    def __init__(self, name, zone, skills, rating, rate, date, hour, earnings):
+    def __init__(self, name, zone, skills, rating, rate, time, earnings):
         """
         Initializes an Expert object
         Requires: name, zone as str
         Requires: skills as tuple
         Requires: rating as int between 0 and 5
         Requires: rate, earnings as float
+        Requires: time is DateTime
         """
         self._name = name  # expert Name
         self._zone = zone  # working zone
         self._skills = skills
         self._rating = rating
         self._rate = rate
-        self._date = date
-        self._hour = hour
+        self._time = time
         self._earnings = earnings
 
     def getName(self):
@@ -57,19 +57,12 @@ class Expert:
         """
         return self._rate
 
-    def getDate(self):
+    def getTime(self):
         """
-        Returns next available working date for the expert.
-        Ensures: a str with the next available free date.
+        Returns next available working time for the expert.
+        Ensures: a DateTime with the next available free time.
         """
-        return self._date
-
-    def getHour(self):
-        """
-        Returns next available working hour for the expert.
-        Ensures: a str with the next available free hour.
-        """
-        return self._hour
+        return self._time
 
     def getEarnings(self):
         """
@@ -90,8 +83,7 @@ class Expert:
                str(self.getSkills()) + ', ' +\
                str(self.getRating()) + '*, ' +\
                str(self.getRate()) + ', ' +\
-               str(self.getDate()) + ', ' +\
-               str(self.getHour()) + ', ' +\
+               str(self.getTime()) + ', ' +\
                str(self.getEarnings())
 
     def __eq__(self, other):
