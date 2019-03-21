@@ -76,7 +76,7 @@ class Expert:
         Returns the total earnings of the experts.
         Ensures: a float with the total expert earnings.
         """
-        return self._hour
+        return self._earnings
 
     def __str__(self):
         """
