@@ -79,21 +79,29 @@ class Expert:
         return self._hour
 
     def __str__(self):
+        """
+        Overrides the string method.
+        Ensures: an str, in the format to be outputted to the experts file:
+        with name, zone, skills, rating, hourly rate and total earnings.
+        """
+
         return str(self.getName()) + ', ' +\
                str(self.getZone()) + ', ' +\
                str(self.getSkills()) + ', ' +\
-               str(self.getRating()) + ', ' +\
+               str(self.getRating()) + '*, ' +\
                str(self.getRate()) + ', ' +\
                str(self.getDate()) + ', ' +\
                str(self.getHour()) + ', ' +\
                str(self.getEarnings())
 
-    def __eq__(self, rhs):
+    def __eq__(self, other):
         """
-        Compares if one Expert is equal to another
+        Overrides the equals (==) operator
         """
+        return self.getRating() == other.getRating()
 
-    def __lt__(self, rhs):
+    def __lt__(self, other):
         """
-        Compares the best of two objects
+        Overrides the less than (<) operator
         """
+        return self.getRating() < other.getRating()
