@@ -7,7 +7,10 @@
 class Match:
     def __init__(self, success, time, client, expert):
         """
-        Initiates a new Match object.
+        Initiates a new Match object. This object saves the
+        info about a specific schedule item. It saves info
+        regarding the time of the job, and the people involved.
+        If success == False, it assumes the request was declined.
         Requires: success as bool (False if declined)
         Requires: client as Client.
         Requires: expert as Expert.
@@ -86,9 +89,19 @@ class Match:
     def __str__(self):
         """
         Returns a string in the format to be written
-        in the schedule.
+        in the schedule file, if success is False,
+        it will return the the string to be written in
+        case of a declined request.
         """
 
-        if self.getSuccess():
-            return str(self.setTime()) + ', ' +\
+        matchDate = self.getTime().getDate()
+        matchTime = self.getTime().getTime()
+        clientName = self.getClient().getName()
+        expertName = self.getExpert().getName()
 
+        if self.getSuccess():
+            return str(matchDate) + ', ' + str(matchTime) + ', ' +\
+                str(clientName) + ', ' + str(expertName)
+        else:
+            return str(matchDate) + ', ' + str(matchTime) + ', ' +\
+                str(clientName) + ', declined'

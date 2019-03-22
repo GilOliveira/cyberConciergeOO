@@ -5,12 +5,12 @@
 
 def newFile(time, scope, company):
     """
-        Opens a file in write mode and writes the required header in the first lines.
-        Requires: time is DateTime
-        Requires: company is str, the name of the company
-        Requires: scope is str (must be either 'schedule' or 'experts').
-        Ensures: the creation of a file with the required file name and header
-        as stated in the project, the file is left open.
+    Opens a file in write mode and writes the required header in the first lines.
+    Requires: time is DateTime
+    Requires: company is str, the name of the company
+    Requires: scope is str (must be either 'schedule' or 'experts').
+    Ensures: the creation of a file with the required file name and header
+    as stated in the project, the file is left open.
     """
 
     fileName = time.getYear()+'y'+time.getMonth()+'m'+ time.getDay() +\
