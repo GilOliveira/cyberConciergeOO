@@ -3,6 +3,9 @@
 # 49269 Mário Gil Oliveira
 # 46261 Margarida Rolo
 
+from Match import Match
+
+
 def newFile(time, scope, company):
     """
     Opens a file in write mode and writes the required header in the first lines.
@@ -20,3 +23,17 @@ def newFile(time, scope, company):
                      '\n', 'Company: \n', company, '\n', scope.capitalize(), ': \n'])
     file.close()
     return fileName
+
+
+def writeSchedule(fileName, schedule):
+    """
+    Opens a schedule file in append mode, adds the schedule from the collection,
+    then closes the file.
+    Requires: fileName as str
+    Requires: schedule as Schedule
+    Ensures: Adds a new line to the corresponding schedule file with the inputted
+    information.
+    """
+    file = open(fileName, 'a')
+    file.writelines(schedule.outputSchedule())
+    file.close()
