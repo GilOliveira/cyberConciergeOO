@@ -65,5 +65,19 @@ class ExpertsCollection:
         """
         pass
 
+    def sortExperts(self):
+        """
+        Sorts the experts by time of availability.
+        """
 
+        pass
 
+    def outputData(self):
+        """
+        Returns a list to be outputted into an updated experts file.
+        """
+        outputList = []
+        for i in self._data:
+            outputList.append(str(i) + ' \n')
+
+        return outputList

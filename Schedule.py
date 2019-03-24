@@ -31,7 +31,7 @@ class Schedule:
     def outputSchedule(self):
         """
         Creates a list to be outputted to the schedule file.
-
+        Ensures: a list to be used in the writelines
         """
 
         pass

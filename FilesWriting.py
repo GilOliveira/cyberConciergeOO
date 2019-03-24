@@ -4,7 +4,7 @@
 # 46261 Margarida Rolo
 
 from Match import Match
-
+from ExpertsCollection import ExpertsCollection
 
 def newFile(time, scope, company):
     """
@@ -29,11 +29,22 @@ def writeSchedule(fileName, schedule):
     """
     Opens a schedule file in append mode, adds the schedule from the collection,
     then closes the file.
-    Requires: fileName as str
+    Requires: fileName as str (must be a schedule file)
     Requires: schedule as Schedule
-    Ensures: Adds a new line to the corresponding schedule file with the inputted
-    information.
+    Ensures: A file with the schedule
     """
     file = open(fileName, 'a')
     file.writelines(schedule.outputSchedule())
     file.close()
+
+def writeExperts(fileName, experts):
+    """
+    Opens a schedule file in append mode, adds the schedule from the collection,
+    then closes the file.
+    Requires: fileName as str (must be a experts file)
+    Requires: experts as ExpertsCollection
+    Ensures: A file with the updated list of experts.
+    """
+    file = open(fileName, 'a')
+    experts.sortExperts()
+    expewriteExperts()
