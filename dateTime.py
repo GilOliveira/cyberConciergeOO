@@ -60,7 +60,7 @@ class dateTime:
                str(self.getHour()) + ':' +\
                str(self.getMinute())
              
-    def addTime(self,increment):
+    def addTime(self, increment):
         """
         Returns the increment of the year, month, day, hour, minute.
         Ensures: an int with the increment of the year, month, day, hour, minute.
@@ -69,7 +69,7 @@ class dateTime:
         endMonth = self.getMonth()
         endDay = self.getDay()
         endHour = self.getHour()
-        endMinute = self.getMinute()
+        endMinute = self.getMinute() + increment
         
         if endMinute > hourMinutes - 1:
             endHours = endHour + endMinute // hourMinutes
