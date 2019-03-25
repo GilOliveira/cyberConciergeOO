@@ -51,14 +51,7 @@ class dateTime:
         Ensures: an int with the minute.
         """
         return self._minute
-    
-    
-    def __str__(self):
-        return str(self.getYear()) + '-' +\
-               str(self.getMonth()) + '-' +\
-               str(self.getDay()) + ', ' +\
-               str(self.getHour()) + ':' +\
-               str(self.getMinute())
+
              
     def addTime(self, increment):
         """
@@ -93,3 +86,10 @@ class dateTime:
                str(self.endDay()) + ', ' +\
                str(self.endHour()) + ':' +\
                str(self.endMinute())
+
+    def __str__(self):
+        return str(self.getYear()) + '-' +\
+               str(self.getMonth()) + '-' +\
+               str(self.getDay()) + ', ' +\
+               str(self.getHour()) + ':' +\
+               str(self.getMinute())
