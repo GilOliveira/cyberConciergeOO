@@ -114,22 +114,3 @@ class dateTime:
                str(self.getHour()) + ':' +\
                str(self.getMinute())
                
-    def setYear(self):
-       self._year=year
-       self.setYear=endYear
-    
-    def setMonth(self):
-       self._month=month
-       self.setMonth=endMonth
-    
-    def setDay(self):
-       self._day=day
-       self.setDay=endDay
-    
-    def setHour(self):
-       self._hour=hour
-       self.setHour=endHour
-    
-    def setMinute(self):
-       self._minute=minute
-       self.setMinute=endMinute
