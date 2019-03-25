@@ -63,6 +63,7 @@ class dateTime:
     def addTime(self, increment):
         """
         Returns the increment of the year, month, day, hour, minute.
+        Requires: increment (ist), the amount of minutes to be added
         Ensures: an int with the increment of the year, month, day, hour, minute.
         """
         endYear = self.getYear()
