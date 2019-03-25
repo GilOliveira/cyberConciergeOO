@@ -3,6 +3,7 @@
 # 49269 Mário Gil Oliveira
 # 46261 Margarida Rolo
 
+from dateTime import dateTime
 
 class Expert:
     def __init__(self, name, zone, skills, rating, rate, time, earnings):
@@ -70,6 +71,18 @@ class Expert:
         Ensures: a float with the total expert earnings.
         """
         return self._earnings
+
+    def addTravelTime(self):
+        """
+        Adds the travel time (60 min.) to the time attribute.
+        If it exceeds the closing time, it sets 'time' to the
+        next day at opening time.
+        """
+
+        self._time.addTime(60)
+
+        if self._time.getHour == 8:
+            self._time.setMinute == 0
 
     def __str__(self):
         """

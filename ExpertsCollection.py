@@ -8,12 +8,12 @@ from copy import deepcopy
 
 class ExpertsCollection:
 
-    def __init__(self):
+    def __init__(self, data=[]):
         """
         Initiates a collection of experts.
         """
 
-        self._data = []
+        self._data = data
 
     def addExpert(self, expert):
         """
@@ -63,6 +63,8 @@ class ExpertsCollection:
         Ensures: the best expert (as Expert) of a collection of
                  compatible experts.
         """
+
+        # ORDENAR POR DATA, TEMPO, PAGAMENTO E NOME E DEVOLVER O PRIMEIRO
         pass
 
     def sortExperts(self):
@@ -81,3 +83,18 @@ class ExpertsCollection:
             outputList.append(str(i) + ' \n')
 
         return outputList
+
+    def items(self):
+        """
+        Creates a iterable list of experts.
+        """
+        for i in self.getExpertsList():
+            yield i
+
+    def count(self):
+        """
+        Returns how many experts are in the collection
+        Ensures: an int, with the number of experts in the collection.
+        """
+
+        return len(self.getExpertsList())

@@ -17,9 +17,8 @@ class dateTime:
         self._hour = hour
         self._minute = minute
   
-    def setYear(self):
-       self._year=year
-       self.setYear=endYear
+    def setYear(self, year):
+        self._year = year
     
     def setMonth(self):
        self._month=month

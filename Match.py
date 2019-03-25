@@ -5,7 +5,7 @@
 
 
 class Match:
-    def __init__(self, success, time, client, expert):
+    def __init__(self, success, client="", expert="", time=""):
         """
         Initiates a new Match object. This object saves the
         info about a specific schedule item. It saves info
