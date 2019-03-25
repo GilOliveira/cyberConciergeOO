@@ -71,25 +71,24 @@ class dateTime:
         endHour = self.getHour()
         endMinute = self.getMinute()
         
-    if endMinutes > hourMinutes - 1:
-        endHours = endHours + endMinutes // hourMinutes
-        endMinutes = endMinutes % hourMinutes
-    
-    while (endHours == closingTime and endMinutes > 0) or endHours > closingTime:
-        endHours = openingTime + (endHours-closingTime)
-        endDay += 1
+        if endMinute > hourMinutes - 1:
+            endHours = endHour + endMinute // hourMinutes
+            endMinutes = endMinute % hourMinutes
 
-    while endDay > monthDays:
-        endDay = endDay - monthDays
-        endMonth += 1
+        while (endHours == closingTime and endMinutes > 0) or endHours > closingTime:
+            endHours = openingTime + (endHours-closingTime)
+            endDay += 1
 
-    while endMonth > yearMonths:
-        endMonth = endMonth - yearMonths
-        endYear += 1
+        while endDay > monthDays:
+            endDay = endDay - monthDays
+            endMonth += 1
+
+        while endMonth > yearMonths:
+            endMonth = endMonth - yearMonths
+            endYear += 1
 
         return str(self.endYear()) + '-' +\
                str(self.endMonth()) + '-' +\
                str(self.endDay()) + ', ' +\
                str(self.endHour()) + ':' +\
                str(self.endMinute())
-    
