@@ -6,10 +6,11 @@
 from copy import deepcopy
 from ExpertsCollection import ExpertsCollection
 from Match import Match
+from Expert import Expert
 
 def update():
     """
-    Função obrigatória tendo em conta a especificação
+    Função obrigatória tendo em conta a especificação.
     """
     pass
 
@@ -24,10 +25,8 @@ def matchclient(client, experts):
     expertsCol = ExpertsCollection(experts.getExpertsList())
     updatedExperts = ExpertsCollection(experts.getExpertsList())
 
-    '''
     for i in expertsCol.items():
         i.addTravelTime()
-    '''
 
     # update the experts collection with only the suitable experts
     expertsCol.setCriteria(client.getMin_rating(),
@@ -39,7 +38,13 @@ def matchclient(client, experts):
         matchClientExpert = Match(False, client)
     else:
         bestExpert = expertsCol.bestExpert()
-        matchclientExpert = Match(True, client, bestExpert)
+        matchClientExpert = Match(True, client, bestExpert)
+        if client.getTime() < bestExpert.getTime():
+            matchClientExpert.setTime(bestExpert.getTime())
+        else:
+            matchClientExpert.setTime(client.getTime())
+
+    # FALTA CRIAR UMA LISTA DE EXPERTS ATUALIZADA
 
 
 

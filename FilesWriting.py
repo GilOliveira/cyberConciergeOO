@@ -47,4 +47,4 @@ def writeExperts(fileName, experts):
     """
     file = open(fileName, 'a')
     experts.sortExperts()
-    expewriteExperts()
+    experts.writeExperts()
