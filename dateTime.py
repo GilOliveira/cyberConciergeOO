@@ -19,23 +19,18 @@ class dateTime:
   
     def setYear(self, year):
        self._year = year
-       self.setYear = endYear
     
     def setMonth(self, month):
        self._month = month
-       self.setMonth = endMonth
     
     def setDay(self, day):
        self._day = day
-       self.setDay = endDay
     
     def setHour(self, hour):
        self._hour = hour
-       self.setHour = endHour
     
     def setMinute(self, minute):
        self._minute = minute
-       self.setMinute = endMinute    
   
     def getYear(self):
         """
@@ -113,4 +108,18 @@ class dateTime:
                str(self.getDay()) + ', ' +\
                str(self.getHour()) + ':' +\
                str(self.getMinute())
+
+    def __lt__(self, other):
+        selfNumeric = self.getYear()*10000 +\
+                      self.getMonth()*100 +\
+                      self.getDay
+
+        otherNumeric = self.getYear() * 10000 + \
+                      self.getMonth() * 100 + \
+                      self.getDay
+
+        if selfNumeric < otherNumeric:
+            return True
+        else:
+            return False
                

@@ -22,17 +22,25 @@ def matchclient(client, experts):
     """
 
     expertsCol = ExpertsCollection(experts.getExpertsList())
+    updatedExperts = ExpertsCollection(experts.getExpertsList())
 
+    '''
     for i in expertsCol.items():
         i.addTravelTime()
+    '''
 
     # update the experts collection with only the suitable experts
     expertsCol.setCriteria(client.getMin_rating(),
                            client.getMax_hourly_charge(),
                            client.getZone())
 
+
     if expertsCol.count() == 0:
         matchClientExpert = Match(False, client)
     else:
-        matchclientExpert = Match(True, client, expertsCol.bestExpert())
+        bestExpert = expertsCol.bestExpert()
+        matchclientExpert = Match(True, client, bestExpert)
+
+
+
 
