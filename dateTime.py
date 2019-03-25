@@ -18,23 +18,24 @@ class dateTime:
         self._minute = minute
   
     def setYear(self, year):
-        self._year = year
+       self._year = year
+       self.setYear = endYear
     
-    def setMonth(self):
-       self._month=month
-       self.setMonth=endMonth
+    def setMonth(self, month):
+       self._month = month
+       self.setMonth = endMonth
     
-    def setDay(self):
-       self._day=day
-       self.setDay=endDay
+    def setDay(self, day):
+       self._day = day
+       self.setDay = endDay
     
-    def setHour(self):
-       self._hour=hour
-       self.setHour=endHour
+    def setHour(self, hour):
+       self._hour = hour
+       self.setHour = endHour
     
-    def setMinute(self):
-       self._minute=minute
-       self.setMinute=endMinute    
+    def setMinute(self, minute):
+       self._minute = minute
+       self.setMinute = endMinute    
   
     def getYear(self):
         """
