@@ -32,7 +32,7 @@ class dateTime:
     def setHour(self, hour):
        self._hour = hour
        self.setHour = endHour
-    
+   
     def setMinute(self, minute):
        self._minute = minute
        self.setMinute = endMinute    
