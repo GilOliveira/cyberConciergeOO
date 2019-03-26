@@ -48,4 +48,11 @@ class ClientsCollection:
         """
         pass
 
+    def count(self):
+        """
+        Counts the number of clients in the collection.
+        Ensures: an int with the number of clients
+        """
+
+        return len(self.getClientsList())
 

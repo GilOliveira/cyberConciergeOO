@@ -72,6 +72,22 @@ class Expert:
         """
         return self._earnings
 
+    def setEarnings(self, earnings):
+        """
+        Sets the earnings of the expert.
+        Requires: earnings (int)
+        """
+
+        self._earnings = earnings
+
+    def setTime(self, time):
+        """
+        Sets the next available time of the expert.
+        Requires: time (dateTime)
+        """
+
+        self._time = time
+
     def addTravelTime(self):
         """
         Adds the travel time (60 min.) to the time attribute.

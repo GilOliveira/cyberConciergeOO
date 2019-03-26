@@ -4,6 +4,7 @@
 # 46261 Margarida Rolo
 
 from copy import deepcopy
+from Expert import Expert
 
 
 class ExpertsCollection:
@@ -98,3 +99,20 @@ class ExpertsCollection:
         """
 
         return len(self.getExpertsList())
+
+    def updateMatchedExpert(self, name, newTime, earned):
+        """
+        Searches for the Expert using name, updates the time
+        with newTime, and adds earned to the earnings.
+        This method is meant to be used after a match, in order to
+        update the expert's time and earnings after an appointment.
+        Requires: name (str) must already exist in collection, the name
+                  of the expert that will be updated
+        Requires: newTime (dateTime), the new time of availability
+        Requires: earned (int), the amount to be added to total earnings.
+        """
+
+        for i in self._data:
+            if i.getName() == name:
+                i.setEarnings(i.getEarnings() + earned)
+                i.setTime(newTime)
