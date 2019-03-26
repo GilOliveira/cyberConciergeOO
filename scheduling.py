@@ -56,7 +56,7 @@ def matchClient(client, experts):
 
     if expertsCol.count() == 0:  # if there are no compatible experts
         matchClientExpert = Match(False, client)  # return denied
-        return (matchClientExpert, updatedExperts)
+        return matchClientExpert, updatedExperts
     else:
         # Temporary variable bestExpert using bestExpert() method
         bestExpert = expertsCol.bestExpert()
@@ -74,6 +74,7 @@ def matchClient(client, experts):
         # Set time matchClientExpert time to matchTime
         matchClientExpert.setTime(matchTime)
 
+        # FALTAM COISAS AQUI!!!!!!
         # amountEarned = INSERIR AQUI PREÇO DO SERVIÇO
         # endTime = INSERIR AQUI TEMPO DE CONCLUSÃO DO SERVIÇO
 
