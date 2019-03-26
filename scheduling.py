@@ -30,6 +30,8 @@ def update(requests, experts):
         scheduleOutput.addToSchedule(matchResults[0])
         updatedExperts = matchResults[1]
 
+    return scheduleOutput, updatedExperts
+
 
 def matchClient(client, experts):
     """
