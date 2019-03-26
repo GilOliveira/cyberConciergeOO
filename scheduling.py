@@ -13,7 +13,7 @@ from Schedule import Schedule
 def update(requests, experts):
     """
     Runs the matching function for each client request.
-    Requires: requests (ClientsColection), the collection of clients
+    Requires: requests (ClientsCollection), the collection of clients
     Requires: experts (ExpertsCollection), the collection of experts
     Ensures: tuple of (schedule, updatedExperts)
              schedule (Schedule) is the collection of matches for
