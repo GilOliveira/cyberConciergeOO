@@ -53,6 +53,32 @@ class Schedule:
     def __str__(self):
         """
         Manages the output
+        Ensures: a string with all the items in the collection.
         """
+        outStr = ""
+        for i in self.getList():
+            outStr = outStr + str(i) + "; "
 
-        pass
+    def __eq__(self, other):
+        """
+        Returns true if self and other have the same number
+        of experts (but not necessarly the same ones)
+        Requires: other is Schedule
+        Ensures: a bool - True if both collections have the same
+                length
+        """
+        if len(self.getList()) == len(other.getList()):
+            return True
+        else:
+            return False
+
+    def __lt__(self, other):
+        """
+        Returns True if other has more elements.
+        Requires: other is Schedule
+        Ensures: a bool - True other has more elements
+        """
+        if len(self.getList()) < len(other.getList()):
+            return True
+        else:
+            return False
