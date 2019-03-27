@@ -32,6 +32,13 @@ class ExpertsCollection:
 
         return deepcopy(self._data)
 
+    def setExpertsList(self, experts):
+        """
+        Sets the experts list.
+        Requires: experts is list and is made up of
+                  Expert objects.
+        """
+
     def items(self):
         """
         Iterates on each of the Experts
@@ -68,12 +75,26 @@ class ExpertsCollection:
         # ORDENAR POR DATA, TEMPO, PAGAMENTO E NOME E DEVOLVER O PRIMEIRO
         pass
 
-    def sortExperts(self):
+    def sortExpertsByTime(self):
         """
         Sorts the experts by time of availability.
         """
 
-        pass
+        expList = self._data
+
+        swapped = True
+        k = len(expList)
+
+        while k > 0 and swapped:
+            for i in range(1, k):
+                if expList[i-1].getTime() > expList[i].getTime():
+                    swapItem = expList[i]
+                    expList[i] = expList[i-1]
+                    expList[i-1] = swapItem
+                    swapped = True
+            k -= 1
+
+        self.setExpertsList(expList)
 
     def outputData(self):
         """
@@ -116,3 +137,10 @@ class ExpertsCollection:
             if i.getName() == name:
                 i.setEarnings(i.getEarnings() + earned)
                 i.setTime(newTime)
+
+    def __str__(self):
+
+        strOut = ""
+        for i in self.getExpertsList():
+            strOut = strOut + str(i) + '; '
+        return strOut
