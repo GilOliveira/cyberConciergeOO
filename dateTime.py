@@ -71,7 +71,7 @@ class dateTime:
     def addTime(self, increment):
         """
         Returns the increment of the year, month, day, hour, minute.
-        Requires: increment (ist), the amount of minutes to be added
+        Requires: increment (int), the amount of minutes to be added
         Ensures: an int with the increment of the year, month, day, hour, minute.
         """
         endYear = self.getYear()
@@ -173,7 +173,6 @@ class dateTime:
         is the same as the other.
         Ensures: bool, True both timestamps are the same.
         """
-
         if self.getYear() == other.getYear() and\
             self.getMonth() == other.getMonth() and\
             self.getDay() == other.getDay() and\
