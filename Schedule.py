@@ -62,7 +62,7 @@ class Schedule:
     def __eq__(self, other):
         """
         Returns true if self and other have the same number
-        of experts (but not necessarly the same ones)
+        of experts (but not necessarily the same ones)
         Requires: other is Schedule
         Ensures: a bool - True if both collections have the same
                 length
