@@ -36,6 +36,20 @@ class Schedule:
 
         pass
 
+    def getList(self):
+        """
+        The collection as a list.
+        Ensures: list of items in the collection
+        """
+        return self._matches
+
+    def items(self):
+        """
+        Iterates on the items of the collection.
+        """
+        for i in self.getList():
+            yield i
+
     def __str__(self):
         """
         Manages the output
