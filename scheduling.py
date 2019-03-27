@@ -47,7 +47,7 @@ def matchClient(client, experts):
     updatedExperts = ExpertsCollection(experts.getExpertsList())
 
     for i in expertsCol.items():
-        i.addTravelTime()  # add the travel time to all in expertsCol
+        i.addTravelTime()  # add the travel time to all experts in expertsCol
 
     # update the experts collection with only the suitable experts
     expertsCol.setCriteria(client.getMin_rating(),
@@ -57,7 +57,7 @@ def matchClient(client, experts):
     if expertsCol.count() == 0:  # if there are no compatible experts
         matchClientExpert = Match(False, client)  # return denied
         return matchClientExpert, updatedExperts
-    else:
+    else:  # if 'if' clause is False, there is >= 1 compatible expert
         # Temporary variable bestExpert using bestExpert() method
         bestExpert = expertsCol.bestExpert()
 

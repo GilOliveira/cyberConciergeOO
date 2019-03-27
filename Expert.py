@@ -97,8 +97,8 @@ class Expert:
 
         self._time.addTime(60)
 
-        if self._time.getHour == 8:
-            self._time.setMinute == 0
+        if self._time.getHour() == 8:
+            self._time.setMinute(0)
 
     def __str__(self):
         """
