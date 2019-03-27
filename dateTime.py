@@ -8,7 +8,7 @@ from constants import yearMonths
 class dateTime:
     def __init__(self, year, month, day, hour, minute):
         """
-        Initializes a dateTime object
+        Initializes a dateTime object - functions as a timestamp.
         Requires: year, month, day, hour, minute as int
         """
         self._year = year
@@ -102,14 +102,54 @@ class dateTime:
                str(self.endHour()) + ':' +\
                str(self.endMinute())
 
+    def items(self):
+        """
+        Iterates over the different parameters of the timestamp.
+        """
+
+        for i in [self.getYear(),
+                  self.getMonth(),
+                  self.getDay(),
+                  self.getHour(),
+                  self.getMinute()]:
+            yield i
+
     def __str__(self):
+        """
+        Returns a string with the object date and time.
+        Ensures: an str with fixed number of characters
+                 in 'YYYY-MM-DD, HH:MM' format
+        """
+
+        monthStr = str(self.getMonth())
+        dayStr = str(self.getDay())
+        hourStr = str(self.gethour())
+        minuteStr = str(self.getMinute())
+
+        if self.getMonth() < 10:
+            monthStr = '0' + monthStr
+
+        if self.getDay() < 10:
+            dayStr = '0' + dayStr
+
+        if self.getHour() < 10:
+            hourStr = '0' + hourStr
+
+        if self.getMinute() < 10:
+            minuteStr = '0' + minuteStr
+
         return str(self.getYear()) + '-' +\
-               str(self.getMonth()) + '-' +\
-               str(self.getDay()) + ', ' +\
-               str(self.getHour()) + ':' +\
-               str(self.getMinute())
+               monthStr + '-' +\
+               dayStr + ', ' +\
+               hourStr + ':' +\
+               minuteStr
 
     def __lt__(self, other):
+        """
+        Overrides < operator, comparing if one date
+        is older than the other.
+        Ensures: bool, True if date is older then other.
+        """
         selfNumeric = self.getYear()*100000000 +\
                       self.getMonth()*1000000 +\
                       self.getDay()*10000 +\
@@ -123,6 +163,22 @@ class dateTime:
                        other.getMinute()
 
         if selfNumeric < otherNumeric:
+            return True
+        else:
+            return False
+
+    def __eq__(self, other):
+        """
+        Overrides == operator, comparing if one timestamp
+        is the same as the other.
+        Ensures: bool, True both timestamps are the same.
+        """
+
+        if self.getYear() == other.getYear() and\
+            self.getMonth() == other.getMonth() and\
+            self.getDay() == other.getDay() and\
+            self.getHour() == other.getHour() and\
+            self.getMinute() == other.getMinute():
             return True
         else:
             return False
