@@ -110,16 +110,19 @@ class dateTime:
                str(self.getMinute())
 
     def __lt__(self, other):
-        selfNumeric = self.getYear()*10000 +\
-                      self.getMonth()*100 +\
-                      self.getDay
+        selfNumeric = self.getYear()*100000000 +\
+                      self.getMonth()*1000000 +\
+                      self.getDay()*10000 +\
+                      self.getHour()*100 +\
+                      self.getMinute()
 
-        otherNumeric = self.getYear() * 10000 + \
-                      self.getMonth() * 100 + \
-                      self.getDay
+        otherNumeric = other.getYear()*100000000 +\
+                       other.getMonth()*1000000 +\
+                       other.getDay()*10000 +\
+                       other.getHour()*100 +\
+                       other.getMinute()
 
         if selfNumeric < otherNumeric:
             return True
         else:
             return False
-               
