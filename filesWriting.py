@@ -19,7 +19,7 @@ def newFile(time, scope, company):
     fileName = str(time.getYear())+'y'+str(time.getMonth())+'m'+str(time.getDay()) +\
                scope + str(time.getHour())+'h'+str(time.getMinute())+'.txt'
     file = open(fileName, 'w')
-    file.writelines(['Day: \n', time.getDate(), '\n', 'Time: \n', time.getTime(),
+    file.writelines(['Day: \n', str(time.getDate()), '\n', 'Time: \n', str(time.getTime()),
                      '\n', 'Company: \n', company, '\n', scope.capitalize(), ': \n'])
     file.close()
     return fileName
@@ -34,6 +34,7 @@ def writeSchedule(fileName, schedule):
     Ensures: A file with the schedule
     """
     file = open(fileName, 'a')
+    schedule.sortSchedule()
     file.writelines(schedule.outputSchedule())
     file.close()
 

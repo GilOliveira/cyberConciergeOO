@@ -31,6 +31,34 @@ class DateTime:
     
     def setMinute(self, minute):
        self._minute = minute
+
+    def getDate(self):
+
+        monthStr = str(self.getMonth())
+        dayStr = str(self.getDay())
+
+        if self.getMonth() < 10:
+            monthStr = '0' + monthStr
+
+        if self.getDay() < 10:
+            dayStr = '0' + dayStr
+
+        return str(str(self.getYear()) + '-' +
+                   monthStr + '-' + dayStr)
+
+    def getTime(self):
+
+        hourStr = str(self.getHour())
+        minuteStr = str(self.getMinute())
+
+        if self.getHour() < 10:
+            hourStr = '0' + hourStr
+
+        if self.getMinute() < 10:
+            minuteStr = '0' + minuteStr
+
+        return hourStr + ':' + minuteStr
+
   
     def getYear(self):
         """
@@ -121,28 +149,7 @@ class DateTime:
                  in 'YYYY-MM-DD, HH:MM' format
         """
 
-        monthStr = str(self.getMonth())
-        dayStr = str(self.getDay())
-        hourStr = str(self.getHour())
-        minuteStr = str(self.getMinute())
-
-        if self.getMonth() < 10:
-            monthStr = '0' + monthStr
-
-        if self.getDay() < 10:
-            dayStr = '0' + dayStr
-
-        if self.getHour() < 10:
-            hourStr = '0' + hourStr
-
-        if self.getMinute() < 10:
-            minuteStr = '0' + minuteStr
-
-        return str(self.getYear()) + '-' +\
-               monthStr + '-' +\
-               dayStr + ', ' +\
-               hourStr + ':' +\
-               minuteStr
+        return self.getDate() + self.getTime()
 
     def __lt__(self, other):
         """

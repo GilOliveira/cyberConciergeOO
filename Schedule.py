@@ -3,6 +3,7 @@
 # 49269 Mário Gil Oliveira
 # 46261 Margarida Rolo
 
+from copy import deepcopy
 
 class Schedule:
 
@@ -26,7 +27,22 @@ class Schedule:
         Sorts the schedule in the correct output order.
         """
 
-        pass
+        schList = self.getList()
+
+        swapped = True
+        k = len(schList)
+
+        # Bubble sort algorithm - sorting by time (ascending)
+        while k > 0 and swapped:
+            for i in range(1, k):
+                if schList[i - 1].getTime() > schList[i].getTime():
+                    swapItem = schList[i]
+                    schList[i] = schList[i - 1]
+                    schList[i - 1] = swapItem
+                    swapped = True
+            k -= 1
+
+        self.setList(schList)
 
     def outputSchedule(self):
         """
@@ -34,14 +50,23 @@ class Schedule:
         Ensures: a list to be used in the writelines
         """
 
-        pass
+        outputList = []
+
+        for i in self.getList():
+            outputList.append(i + '\n')
+
+        return outputList
 
     def getList(self):
         """
         The collection as a list.
         Ensures: list of items in the collection
         """
-        return self._matches
+        return deepcopy(self._matches)
+
+    def setList(self, list):
+
+        self._matches = list
 
     def items(self):
         """
