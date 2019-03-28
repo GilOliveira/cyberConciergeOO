@@ -120,3 +120,10 @@ class Client:
                str(self.getMin_rating()) + '*, ' +\
                str(self.getRequired_expertise()) + ', ' +\
                str(self.getDuration())
+               
+    def __eq__ (self, other):
+        
+        
+    def __lt__ (self, other):
+        
+    def items (self):
