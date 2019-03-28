@@ -22,15 +22,16 @@ def update(requests, experts):
               experts.
     """
 
-    updatedExperts = ExpertsCollection(experts.getExpertsList())
+    newExperts = ExpertsCollection(experts.getExpertsList())
     scheduleOutput = Schedule()
 
     for client in requests.items():
-        matchResults = matchClient(client, updatedExperts)
+        matchResults = matchClient(client, newExperts)
         scheduleOutput.addToSchedule(matchResults[0])
-        updatedExperts = matchResults[1]
+        newExperts = matchResults[1]
 
-    return scheduleOutput, updatedExperts
+
+    return scheduleOutput, newExperts
 
 
 def matchClient(client, experts):
@@ -42,9 +43,7 @@ def matchClient(client, experts):
 
     # Collection that is going to be used in the match process:
     expertsCol = ExpertsCollection(experts.getExpertsList())
-
-    # Collection that is going to be updated with new data:
-    updatedExperts = ExpertsCollection(experts.getExpertsList())
+    updatedExperts = deepcopy(expertsCol)
 
     for i in expertsCol.items():
         i.addTravelTime()  # add the travel time to all experts in expertsCol
@@ -66,10 +65,10 @@ def matchClient(client, experts):
 
         # check the time in which both are available and
         # set matchTime var to that time
-        if client.getTime() < bestExpert.getTime():
-            matchTime = bestExpert.getTime()
+        if client.getDateTime() < bestExpert.getDateTime():
+            matchTime = bestExpert.getDateTime()
         else:
-            matchTime = client.getTime()
+            matchTime = client.getDateTime()
 
         # Set time matchClientExpert time to matchTime
         matchClientExpert.setTime(matchTime)
@@ -78,10 +77,13 @@ def matchClient(client, experts):
         amountEarned = bestExpert.getRate() + client.getDuration().floatHours()
 
         # timestamp in which the job ends
-        endTime = matchTime.addTime(client.getDuration().getTotalMinutes())
+        endTime = matchTime
+        endTime.addTime(client.getDuration().getTotalMinutes())
+
 
         # Updates the expert in the collection
         updatedExperts.updateMatchedExpert(bestExpert.getName(), endTime, amountEarned)
+
 
         # Returns the match and the updated list of experts
         return matchClientExpert, updatedExperts

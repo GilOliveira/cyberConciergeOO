@@ -6,21 +6,21 @@
 from DateTime import DateTime
 
 class Expert:
-    def __init__(self, name, zone, skills, rating, rate, time, earnings):
+    def __init__(self, name, zone, skills, rating, rate, dateTime, earnings):
         """
         Initializes an Expert object
         Requires: name, zone as str
         Requires: skills as tuple
         Requires: rating as int between 0 and 5
         Requires: rate, earnings as float
-        Requires: time is DateTime
+        Requires: dateTime is DateTime
         """
         self._name = name  # expert Name
         self._zone = zone  # working zone
         self._skills = skills
         self._rating = rating
         self._rate = rate
-        self._time = time
+        self._dateTime = dateTime
         self._earnings = earnings
 
     def getName(self):
@@ -58,12 +58,12 @@ class Expert:
         """
         return self._rate
 
-    def getTime(self):
+    def getDateTime(self):
         """
         Returns next available working time for the expert.
         Ensures: a DateTime with the next available free time.
         """
-        return self._time
+        return self._dateTime
 
     def getEarnings(self):
         """
@@ -80,25 +80,28 @@ class Expert:
 
         self._earnings = earnings
 
-    def setTime(self, time):
+    def setDateTime(self, dateTime):
         """
         Sets the next available time of the expert.
-        Requires: time (dateTime)
+        Requires: dateTime (dateTime)
         """
 
-        self._time = time
+        self._dateTime = dateTime
 
     def addTravelTime(self):
         """
-        Adds the travel time (60 min.) to the time attribute.
-        If it exceeds the closing time, it sets 'time' to the
+        Adds the travel time (60 min.) to the dateTime attribute.
+        If it exceeds the closing time, it sets 'dateTime' to the
         next day at opening time.
         """
 
-        self._time.addTime(60)
+        dateTime = self.getDateTime()
+        dateTime.addTime(60)
 
-        if self._time.getHour() == 8:
-            self._time.setMinute(0)
+        if dateTime.getHour() == 8:
+            dateTime.setMinute(0)
+
+        self.setDateTime(dateTime)
 
     def __str__(self):
         """
@@ -112,7 +115,7 @@ class Expert:
                str(self.getSkills()) + ', ' +\
                str(self.getRating()) + '*, ' +\
                str(self.getRate()) + ', ' +\
-               str(self.getTime()) + ', ' +\
+               str(self.getDateTime()) + ', ' +\
                str(self.getEarnings())
 
     def __eq__(self, other):

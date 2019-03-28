@@ -89,7 +89,7 @@ def readClients(fileName):
 
         clientTemp = Client(i[0],
                             i[1][1:],
-                            DateTime(i[2][1:5], month, day, hour, minute),
+                            DateTime(int(i[2][1:5]), month, day, hour, minute),
                             int(i[4][1:]),
                             int(i[5][1:]),
                             i[6][1:],
@@ -131,9 +131,9 @@ def readExperts(fileName):
 
         # Calculate day
         if i[5][9] == '0':
-            day = int([5][10])
+            day = int(i[5][10])
         else:
-            day = int([5][9:11])
+            day = int(i[5][9:11])
 
         # Calculate hour
         if i[6][1] == '0':
@@ -149,13 +149,14 @@ def readExperts(fileName):
 
         expertTemp = Expert(i[0],
                             i[1][1:],
-                            tuple(i[2][1:].replace(";",",").replace("(","").replace(")","").split(",")),
+                            tuple(i[2][1:].replace(";",",").replace("(","").replace(")","").replace(" ","").split(",")),
                             int(i[3][1:]),
                             int(i[4][1:]),
-                            DateTime(i[5][1:5], month, day, hour, minute),
+                            DateTime(int(i[5][1:5]), month, day, hour, minute),
                             float(i[7][1:]))
 
         inExperts.addExpert(expertTemp)
+
 
     fileIn.close()
     filetwo.close()

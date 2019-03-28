@@ -58,12 +58,16 @@ class ExpertsCollection:
                  criteria from the collection
         """
 
-        for i in range(len(self._data)):
-            if self._data[i].getZone() != zone \
-                    or self._data[i].getRating() < rating \
-                    or self._data[i].getRate() > hourlyRate:
+        compatibleExperts = []
 
-                self._data.pop(i)
+        for i in range(self.count()):
+            if self.getExpertsList()[i].getZone() == zone \
+                    or self.getExpertsList()[i].getRating() > rating \
+                    or self.getExpertsList()[i].getRate() < hourlyRate:
+                compatibleExperts.append(self.getExpertsList()[i])
+
+        self.setExpertsList(compatibleExperts)
+
 
     def bestExpert(self):
         """
@@ -71,28 +75,28 @@ class ExpertsCollection:
         Ensures: the best expert (as Expert) of a collection of
                  compatible experts.
         """
-        best_expert = self.getExpertsList()[0]
-        for j in range(1, len(self.count())):
-            if self.getExpertsList()[j].getTime()<best_expert.getTime():
-                best_expert = self.getExpertsList()[j]
-                elif self.getExpertsList()[j].getTime()==best_expert.getTime(): 
-                    #Time
-                    if self.getExpertsList()[j].getRate()==best_expert.getTime():
-                        #Euros/hour
-                        if self.getExpertsList()[j].getRate()<best_expert.getTime():
-                            best_expert = self.getExpertsList()[j]
-                    
-                        elif(outputList[j][4]==best_expert[2]):
-                            #total euros
-                            if(outputList[j][7]<best_expert[3]):
-                                best_expert=(outputList[j][5],outputList[j][6],outputList[j][4],outputList[j][7],outputList[j][0],j)
-                    
-                            elif(outputList[j][7]==best_expert[3]):
-                                #name
-                                if(outputList[j][0]<best_expert[4]):
-                                    best_expert=(outputList[j][5],outputList[j][6],outputList[j][4],outputList[j][7],outputList[j][0],j)
-        # ORDENAR POR DATA, TEMPO, PAGAMENTO E NOME E DEVOLVER O PRIMEIRO
-        pass
+        best = self.getExpertsList()[0]  # the best expert starts beeing the first
+
+        # the following cycle will check who is the most suitable expert, by comparing
+        # each expert to the 'best', in which case, the 'best' variable is updated
+        for j in range(1, self.count()):
+            # who is available first:
+            if self.getExpertsList()[j].getDateTime() < best.getDateTime():
+                best = self.getExpertsList()[j]
+            elif self.getExpertsList()[j].getDateTime() == best.getDateTime():
+                # who has the best rate:
+                if self.getExpertsList()[j].getRate() < best.getRate():
+                    best = self.getExpertsList()[j]
+                elif self.getExpertsList()[j].getRate() == best.getRate():
+                    # who has the least total earnings
+                    if self.getExpertsList()[j].getEarnings() < best.getEarnings():
+                        best = self.getExpertsList()[j]
+                    elif self.getExpertsList()[j].getEarnings() == best.getEarnings():
+                        # who is the first in alphabetical order:
+                        if self.getExpertsList()[j].getName() < best.getName():
+                            best = self.getExpertsList()[j]
+
+        return best
 
     def sortExpertsByTime(self):
         """
@@ -149,7 +153,7 @@ class ExpertsCollection:
         for i in self._data:
             if i.getName() == name:
                 i.setEarnings(i.getEarnings() + earned)
-                i.setTime(newTime)
+                i.setDateTime(newTime)
 
     def __str__(self):
 

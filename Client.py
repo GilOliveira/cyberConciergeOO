@@ -35,7 +35,7 @@ class Client:
         """
         return self._zone
 
-    def getdateTime(self):
+    def getDateTime(self):
         """
         """
         return self._dateTime
@@ -115,27 +115,27 @@ class Client:
     def __str__(self):
         return str(self.getName()) + ', ' +\
                str(self.getZone()) + ', ' +\
-               str(self.getdateTime()) + ', ' +\
+               str(self.getDateTime()) + ', ' +\
                str(self.getMax_hourly_charge()) + ', ' +\
                str(self.getMin_rating()) + '*, ' +\
                str(self.getRequired_expertise()) + ', ' +\
                str(self.getDuration())
                
     def __eq__ (self, other):
-        if self.getdateTime() == other.getdateTime():
+        if self.getDateTime() == other.getdateTime():
             return True
          
         
     def __lt__ (self, other):
-        if self.getdateTime() < other.getdateTime():
+        if self.getDateTime() < other.getdateTime():
             return True
         
     def items (self):
          for i in [self.getName(),
                   self.getZone(),
-                  self.getdateTime(),
-                  self.getmax_hourly_charge(),
-                  self.getmin_rating(),
+                  self.getDateTime(),
+                  self.getMax_hourly_charge(),
+                  self.getMin_rating(),
                   self.getRequired_expertise(),
                   self.getDuration()]:
             yield i

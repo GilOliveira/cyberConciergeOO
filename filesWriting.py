@@ -16,8 +16,8 @@ def newFile(time, scope, company):
     as stated in the project, the file is left open.
     """
 
-    fileName = time.getYear()+'y'+time.getMonth()+'m'+ time.getDay() +\
-               scope + time.getHour()+'h'+time.getMinute()+'.txt'
+    fileName = str(time.getYear())+'y'+str(time.getMonth())+'m'+str(time.getDay()) +\
+               scope + str(time.getHour())+'h'+str(time.getMinute())+'.txt'
     file = open(fileName, 'w')
     file.writelines(['Day: \n', time.getDate(), '\n', 'Time: \n', time.getTime(),
                      '\n', 'Company: \n', company, '\n', scope.capitalize(), ': \n'])
