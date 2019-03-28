@@ -3,7 +3,7 @@
 # 49269 Mário Gil Oliveira
 # 46261 Margarida Rolo
 
-from DateTime import dateTime
+from DateTime import DateTime
 
 class Expert:
     def __init__(self, name, zone, skills, rating, rate, time, earnings):

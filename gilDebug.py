@@ -21,7 +21,6 @@ for i in col1.items:
 print(col1.outputData())
 '''
 
-dt1 = dateTime(2019, 20, 10, 10, 10)
-dt1.addTime(10)
+from filesReading import *
 
-print(dt1)
+print(str(readClients('2019y01m12clients09h00.txt')))

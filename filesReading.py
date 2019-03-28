@@ -93,7 +93,7 @@ def readClients(fileName):
                             int(i[4][1]),
                             int(i[5][1:]),
                             i[6][1:],
-                            Duration([1:]))
+                            Duration(i[1:]))
 
         inClients.addClient()
 
