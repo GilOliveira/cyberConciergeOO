@@ -1,52 +1,49 @@
+# 2018-2019 Programação 2 (LTI)
+# Grupo 34
+# 49269 Mário Gil Oliveira
+# 46261 Margarida Rolo
+
 from Match import Match
 from ExpertsCollection import ExpertsCollection
-from ClientsCollection import ClientsCollection
+from DateTime import DateTime
 
-def readFile(fileName):
+def readnewFile(fileName):
     """
-    Converts a given file listing experts or clients into a collection
-    Requires: fileName is str, the name of a .txt file listing experts,
-    following the format specified in the project.
-    Ensures: class whose first element is the first expert or client and its resume up until the last expert
-    """
-
-    fileIn = open(fileName, 'r')
-    filetwo = open(fileName, 'r')
-    lenfile = len(filetwo.readlines())
-    
-    outputList = []
-
-    # header always has 7 lines
-    for i in range(7):
-        fileIn.readline()
-
-    for i in range(lenfile-7):
-        outputList.append(fileIn.readline().replace("*","").replace("\n","").split(","))
-
-    return outputList
-
-
-def readHeader(fileName):
-    """
-    Converts a given file listing experts or clients and returns day, time,
-    company as variables.
-    Requires : fileName is str, the name of a .txt file listing experts,
-    following the format specified in the project.
-    Ensures: class with day, time, company and scope as str
+    Opens a file in read mode and reads the required header in the first lines.
+    Requires: time is DateTime
+    Requires: company is str, the name of the company
+    Requires: scope is str (must be either 'schedule' or 'experts').
+    Ensures: the reading of a file with the required file name and header
+    as stated in the project.
     """
 
-    fileIn = open(fileName, 'r')
+    file = open(fileName, 'r')
+    file.readline()  # Ignore first line
+    fullDate = file.readline()  # YYYY-MM-DD
+    outDate =
 
-    fileIn.readline()
-    day = fileIn.readline().replace("\n", "")
-    fileIn.readline()
-    time = fileIn.readline().replace("\n", "")
-    fileIn.readline()
-    company = fileIn.readline().replace("\n", "")
-    scope = fileIn.readline().replace("\n", "").replace(":","")
-    return (day,time,company,scope)
+    file.close()
+    return fileName
 
 
+def readSchedule(fileName, schedule):
+    """
+    Opens a schedule file in read mode.
+    Requires: fileName as str (must be a schedule file)
+    Requires: schedule as Schedule
+    Ensures: reading a file with the schedule
+    """
+    file = open(fileName, 'a')
+    file.readlines(schedule.outputSchedule())
+    file.close()
 
-
-
+def readExperts(fileName, experts):
+    """
+    Opens a experts file in read mode.
+    Requires: fileName as str (must be a experts file)
+    Requires: experts as ExpertsCollection
+    Ensures: the reading of a file with the experts listing.
+    """
+    file = open(fileName, 'a')
+    experts.sortExperts()
+    experts.readExperts()
