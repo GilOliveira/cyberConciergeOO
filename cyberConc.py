@@ -8,13 +8,19 @@ from ExpertsCollection import ExpertsCollection
 from ClientsCollection import ClientsCollection
 import scheduling
 import filesWriting
-from DateTime import dateTime
+from DateTime import DateTime
+import filesReading
+
 
 def assign(inputExperts, inputClients):
 
-    # COLOCAR CÓDIGO QUE CHAME O FILES READING AQUI
-    # OS INPUTS DEVERÃO SER INSERIDOS EM inRequests e inExperts
-    # TAMBÉM É NECESSÁRIO TER O scheduleTime e o company
+    fileInfo = filesReading.readNewFile(inputExperts)
+
+    scheduleTime = fileInfo[0]
+    company = fileInfo[1]
+
+    inExperts = filesReading.readExperts(inputExperts)
+    inRequests = filesReading.readClients(inputClients)
 
     outScheduling = scheduling.update(inRequests, inExperts)
 
