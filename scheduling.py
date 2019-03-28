@@ -46,8 +46,8 @@ def matchClient(client, experts):
     updatedExperts = deepcopy(expertsCol)
 
     # TO BE DELETED
-    #for i in expertsCol.items():
-    #    i.addTravelTime()  # add the travel time to all experts in expertsCol
+    for i in expertsCol.items():
+        i.addTravelTime()  # add the travel time to all experts in expertsCol
 
 
     # update the experts collection with only the suitable experts
