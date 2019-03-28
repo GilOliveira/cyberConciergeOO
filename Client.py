@@ -74,9 +74,8 @@ class Client:
     def __str__(self):
         return str(self.getName()) + ', ' +\
                str(self.getZone()) + ', ' +\
-               str(self.getDate()) + ', ' +\
-               str(self.getHour()) + ', ' +\
+               str(self.getdateTime()) + ', ' +\
                str(self.getMax_hourly_charge()) + ', ' +\
-               str(self.getMin_rating()) + ', ' +\
+               str(self.getMin_rating()) + '*, ' +\
                str(self.getRequired_expertise()) + ', ' +\
                str(self.getDuration())

@@ -90,7 +90,7 @@ def readClients(fileName):
         clientTemp = Client(i[0],
                             i[1][1:],
                             DateTime(i[2][1:5], month, day, hour, minute),
-                            int(i[4][1]),
+                            int(i[4][1:]),
                             int(i[5][1:]),
                             i[6][1:],
                             Duration(i[7][1:]))

@@ -123,7 +123,7 @@ class DateTime:
 
         monthStr = str(self.getMonth())
         dayStr = str(self.getDay())
-        hourStr = str(self.gethour())
+        hourStr = str(self.getHour())
         minuteStr = str(self.getMinute())
 
         if self.getMonth() < 10:

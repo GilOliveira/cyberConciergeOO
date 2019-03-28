@@ -55,8 +55,8 @@ class Duration:
         if self.getMinutes() < 10:
             minutesStr = '0' + minutesStr
 
-        return str(self.getHourStr + ':'+\
-               minuteStr)
+        return str(hoursStr + 'h'+\
+               minutesStr)
 
     def __lt__(self, other):
         """
@@ -76,7 +76,7 @@ class Duration:
         """
         """
         if self.getHour() == other.getHour() and\
-            self.getMinute() == other.getMinute():
+           self.getMinute() == other.getMinute():
             return True
         else:
             return False
