@@ -152,7 +152,7 @@ def readExperts(fileName):
                             tuple(i[2][1:].replace(";",",").replace("(","").replace(")","").split(",")),
                             int(i[3][1:]),
                             int(i[4][1:]),
-                            dateTime(i[5][1:5], month, day, hour, minute),
+                            DateTime(i[5][1:5], month, day, hour, minute),
                             float(i[7][1:]))
 
         inExperts.addExpert(expertTemp)

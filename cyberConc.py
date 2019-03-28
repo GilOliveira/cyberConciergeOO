@@ -8,7 +8,7 @@ from ExpertsCollection import ExpertsCollection
 from ClientsCollection import ClientsCollection
 import scheduling
 import filesWriting
-from dateTime import dateTime
+from DateTime import dateTime
 
 def assign(inputExperts, inputClients):
 
