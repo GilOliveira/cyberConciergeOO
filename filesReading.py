@@ -73,7 +73,7 @@ def readClients(fileName):
         if i[2][9] == '0':
             day = int([2][10])
         else:
-            day = int([2][9:11])
+            day = int(i[2][-2:])
 
         # Calculate hour
         if i[3][1] == '0':
@@ -93,9 +93,9 @@ def readClients(fileName):
                             int(i[4][1]),
                             int(i[5][1:]),
                             i[6][1:],
-                            Duration(i[1:]))
+                            Duration(i[7][1:]))
 
-        inClients.addClient()
+        inClients.addClient(clientTemp)
 
     fileIn.close()
     filetwo.close()

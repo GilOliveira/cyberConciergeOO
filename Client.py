@@ -40,7 +40,7 @@ class Client:
         """
 
         """
-        return self._date
+        return self._dateTime
 
 
     def getMax_hourly_charge(self):

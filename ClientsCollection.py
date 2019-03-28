@@ -56,3 +56,10 @@ class ClientsCollection:
 
         return len(self.getClientsList())
 
+    def items(self):
+        for i in self._data:
+            yield i
+
+    def __str__(self):
+        return str(self._data)
+
