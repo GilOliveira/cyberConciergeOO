@@ -122,8 +122,21 @@ class Client:
                str(self.getDuration())
                
     def __eq__ (self, other):
-        
+        if self.getdateTime() == other.getdateTime():
+            return True
+         
         
     def __lt__ (self, other):
+        if self.getdateTime() < other.getdateTime():
+            return True
         
     def items (self):
+         for i in [self.getName(),
+                  self.getZone(),
+                  self.getdateTime(),
+                  self.getmax_hourly_charge(),
+                  self.getmin_rating(),
+                  self.getRequired_expertise(),
+                  self.getDuration()]:
+            yield i
+        
