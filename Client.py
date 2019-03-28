@@ -1,4 +1,3 @@
-
 # 2018-2019 Programação 2 (LTI)
 # Grupo 34
 # 49269 Mário Gil Oliveira
@@ -38,7 +37,6 @@ class Client:
 
     def getdateTime(self):
         """
-
         """
         return self._dateTime
 
@@ -67,9 +65,52 @@ class Client:
     def getDuration(self):
         """
         Returns the duration of the job required by the client.
-        Ensures: a float with the duration of the job.
+        Ensures: a float with the duration of the job. 
         """
         return self._duration
+    
+    
+    def setName(self, name):
+        """
+        
+        """
+        self._name = name
+
+    def setZone(self, zone):
+        """
+       
+        """
+        self._zone = zone
+
+    def setdateTime(self, dateTime):
+        """
+        """
+        self._dateTime = dateTime
+
+
+    def setMax_hourly_charge(self, max_hourly_charge):
+        """
+      
+        """
+        self._max_hourly_charge = max_hourly_charge
+
+    def setMin_rating(self, min_rating):
+        """
+       
+        """
+        self._min_rating = min_rating
+
+    def setRequired_expertise(self, required_expertise):
+        """
+       
+        """
+        self._required_expertise = required_expertise
+
+    def setDuration(self, duration):
+        """
+       
+        """
+        self._duration = duration
 
     def __str__(self):
         return str(self.getName()) + ', ' +\
