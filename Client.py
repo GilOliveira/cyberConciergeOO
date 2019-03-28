@@ -36,7 +36,7 @@ class Client:
         """
         return self._zone
 
-       def getdateTime(self):
+    def getdateTime(self):
         """
 
         """
