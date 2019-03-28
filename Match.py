@@ -97,9 +97,9 @@ class Match:
         matchDate = self.getTime().getDate()
         matchTime = self.getTime().getTime()
         clientName = self.getClient().getName()
-        expertName = self.getExpert().getName()
 
         if self.getSuccess():
+            expertName = self.getExpert().getName()
             return str(matchDate) + ', ' + str(matchTime) + ', ' +\
                 str(clientName) + ', ' + str(expertName)
         else:

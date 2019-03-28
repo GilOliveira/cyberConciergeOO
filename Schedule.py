@@ -4,6 +4,7 @@
 # 46261 Margarida Rolo
 
 from copy import deepcopy
+from Match import Match
 
 class Schedule:
 
@@ -26,23 +27,43 @@ class Schedule:
         """
         Sorts the schedule in the correct output order.
         """
+        list1 = []
+        list2 = []
 
-        schList = self.getList()
-
+        for i in self.getList():
+            if not i.getSuccess():
+                list1.append(i)  # Denied list
+                
+            else:    
+                list2.append(i)  # Matched list
+        
         swapped = True
-        k = len(schList)
+        k = len(list1)
 
         # Bubble sort algorithm - sorting by time (ascending)
         while k > 0 and swapped:
             for i in range(1, k):
-                if schList[i - 1].getTime() > schList[i].getTime():
-                    swapItem = schList[i]
-                    schList[i] = schList[i - 1]
-                    schList[i - 1] = swapItem
+                if list1[i - 1].getTime() > list1[i].getTime():
+                    swapItem = list1[i]
+                    list1[i] = list1[i - 1]
+                    list1[i - 1] = swapItem
                     swapped = True
             k -= 1
 
-        self.setList(schList)
+        swapped = True
+        k = len(list2)
+
+        # Bubble sort algorithm - sorting by time (ascending)
+        while k > 0 and swapped:
+            for i in range(1, k):
+                if list2[i - 1].getTime() > list2[i].getTime():
+                    swapItem = list2[i]
+                    list2[i] = list2[i - 1]
+                    list2[i - 1] = swapItem
+                    swapped = True
+            k -= 1
+
+        self.setList(list1+list2)
 
     def outputSchedule(self):
         """

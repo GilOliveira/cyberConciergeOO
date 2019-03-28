@@ -45,16 +45,19 @@ def matchClient(client, experts):
     expertsCol = ExpertsCollection(experts.getExpertsList())
     updatedExperts = deepcopy(expertsCol)
 
-    for i in expertsCol.items():
-        i.addTravelTime()  # add the travel time to all experts in expertsCol
+    # TO BE DELETED
+    #for i in expertsCol.items():
+    #    i.addTravelTime()  # add the travel time to all experts in expertsCol
+
 
     # update the experts collection with only the suitable experts
     expertsCol.setCriteria(client.getMin_rating(),
                            client.getMax_hourly_charge(),
-                           client.getZone())
+                           client.getZone(),
+                           client.getRequired_expertise())
 
     if expertsCol.count() == 0:  # if there are no compatible experts
-        matchClientExpert = Match(False, client)  # return denied
+        matchClientExpert = Match(False, client, 'N/A', client.getDateTime())  # return denied
         return matchClientExpert, updatedExperts
     else:  # if 'if' clause is False, there is >= 1 compatible expert
         # Temporary variable bestExpert using bestExpert() method
@@ -86,6 +89,7 @@ def matchClient(client, experts):
 
 
         # Returns the match and the updated list of experts
+
         return matchClientExpert, updatedExperts
 
 

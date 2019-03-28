@@ -39,6 +39,8 @@ class ExpertsCollection:
                   Expert objects.
         """
 
+        self._data = experts
+
     def items(self):
         """
         Iterates on each of the Experts
@@ -47,7 +49,7 @@ class ExpertsCollection:
         for i in self.getExpertsList():
             yield i
 
-    def setCriteria(self, rating, hourlyRate, zone):
+    def setCriteria(self, rating, hourlyRate, zone, skill):
         """
         Excludes unfit Experts with the given criteria.
         Requires: rating (int), the minimum rating accepted
@@ -60,10 +62,12 @@ class ExpertsCollection:
 
         compatibleExperts = []
 
+
         for i in range(self.count()):
             if self.getExpertsList()[i].getZone() == zone \
-                    or self.getExpertsList()[i].getRating() > rating \
-                    or self.getExpertsList()[i].getRate() < hourlyRate:
+                    and self.getExpertsList()[i].getRating() >= rating \
+                    and self.getExpertsList()[i].getRate() <= hourlyRate\
+                    and skill in self.getExpertsList()[i].getSkills():
                 compatibleExperts.append(self.getExpertsList()[i])
 
         self.setExpertsList(compatibleExperts)
