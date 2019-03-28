@@ -71,7 +71,26 @@ class ExpertsCollection:
         Ensures: the best expert (as Expert) of a collection of
                  compatible experts.
         """
-
+        best_expert = self.getExpertsList()[0]
+        for j in range(1, len(self.count())):
+            if self.getExpertsList()[j].getTime()<best_expert.getTime():
+                best_expert = self.getExpertsList()[j]
+                elif self.getExpertsList()[j].getTime()==best_expert.getTime(): 
+                    #Time
+                    if self.getExpertsList()[j].getRate()==best_expert.getTime():
+                        #Euros/hour
+                        if self.getExpertsList()[j].getRate()<best_expert.getTime():
+                            best_expert = self.getExpertsList()[j]
+                    
+                        elif(outputList[j][4]==best_expert[2]):
+                            #total euros
+                            if(outputList[j][7]<best_expert[3]):
+                                best_expert=(outputList[j][5],outputList[j][6],outputList[j][4],outputList[j][7],outputList[j][0],j)
+                    
+                            elif(outputList[j][7]==best_expert[3]):
+                                #name
+                                if(outputList[j][0]<best_expert[4]):
+                                    best_expert=(outputList[j][5],outputList[j][6],outputList[j][4],outputList[j][7],outputList[j][0],j)
         # ORDENAR POR DATA, TEMPO, PAGAMENTO E NOME E DEVOLVER O PRIMEIRO
         pass
 
@@ -106,12 +125,6 @@ class ExpertsCollection:
 
         return outputList
 
-    def items(self):
-        """
-        Creates a iterable list of experts.
-        """
-        for i in self.getExpertsList():
-            yield i
 
     def count(self):
         """
