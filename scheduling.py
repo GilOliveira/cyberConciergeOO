@@ -74,9 +74,11 @@ def matchClient(client, experts):
         # Set time matchClientExpert time to matchTime
         matchClientExpert.setTime(matchTime)
 
-        # FALTAM COISAS AQUI!!!!!!
-        # amountEarned = INSERIR AQUI PREÇO DO SERVIÇO
-        # endTime = INSERIR AQUI TEMPO DE CONCLUSÃO DO SERVIÇO
+        # Amount earned by the expert
+        amountEarned = bestExpert.getRate() + client.getDuration().floatHours()
+
+        # timestamp in which the job ends
+        endTime = matchTime.addTime(client.getDuration().getTotalMinutes())
 
         # Updates the expert in the collection
         updatedExperts.updateMatchedExpert(bestExpert.getName(), endTime, amountEarned)

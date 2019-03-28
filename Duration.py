@@ -25,13 +25,16 @@ class Duration:
         """
         """
         return self._minutes
+
+    def getTotalMinutes(self):
+
+        return self._minutes + 60 * self._hours
     
     def floatHours (self):
         """
         """
-        minTotal = (self._minutes + 60 * self._hours)
         
-        return minTotal/60
+        return self.getTotalMinutes()*60
     
     def items(self):
         """
