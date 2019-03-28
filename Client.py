@@ -6,7 +6,7 @@
 
 
 class Client:
-    def __init__(self, name, zone, date, hour, max_hourly_charge, min_rating, required_expertise, duration):
+    def __init__(self, name, zone, dateTime, max_hourly_charge, min_rating, required_expertise, duration):
         """
         Initializes a Client object
         Requires: name, zone as str
@@ -16,8 +16,7 @@ class Client:
         """
         self._name = name  # Client Name
         self._zone = zone  # Client zone
-        self._date = date
-        self._hour = hour
+        self._dateTime = dateTime
         self._max_hourly_charge = max_hourly_charge
         self._min_rating = min_rating
         self._required_expertise = required_expertise
@@ -37,19 +36,12 @@ class Client:
         """
         return self._zone
 
-       def getDate(self):
+       def getdateTime(self):
         """
-        Returns date from whitch the request must be done.
-        Ensures: a str with the requested date.
+
         """
         return self._date
 
-    def getHour(self):
-        """
-        Returns hour from whitch the request must be done.
-        Ensures: a str with the requested hour.
-        """
-        return self._hour
 
     def getMax_hourly_charge(self):
         """

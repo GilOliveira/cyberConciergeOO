@@ -160,4 +160,4 @@ def readExperts(fileName):
     fileIn.close()
     filetwo.close()
 
-    return inClients
+    return inExperts
