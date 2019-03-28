@@ -47,5 +47,5 @@ def writeExperts(fileName, experts):
     Ensures: A file with the updated list of experts.
     """
     file = open(fileName, 'a')
-    experts.sortExperts()
-    experts.writeExperts()
+    experts.sortExpertsByTime()
+    file.writelines(experts.outputData())

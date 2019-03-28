@@ -53,7 +53,7 @@ class Schedule:
         outputList = []
 
         for i in self.getList():
-            outputList.append(i + '\n')
+            outputList.append(str(i) + '\n')
 
         return outputList
 

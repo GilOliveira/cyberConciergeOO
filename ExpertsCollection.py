@@ -110,7 +110,7 @@ class ExpertsCollection:
 
         while k > 0 and swapped:
             for i in range(1, k):
-                if expList[i-1].getTime() > expList[i].getTime():
+                if expList[i-1].getDateTime() > expList[i].getDateTime():
                     swapItem = expList[i]
                     expList[i] = expList[i-1]
                     expList[i-1] = swapItem
