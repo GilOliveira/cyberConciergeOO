@@ -165,3 +165,13 @@ class ExpertsCollection:
         for i in self.getExpertsList():
             strOut = strOut + str(i) + '; '
         return strOut
+
+    def addTravelTime(self):
+        """
+        Add travel time (60 min.) to all experts in the collection
+        """
+
+        expertsList = self.getExpertsList()
+
+        for i in range(len(self.getExpertsList())):
+            self._data[i].addTravelTime()

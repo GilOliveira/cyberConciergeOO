@@ -45,9 +45,8 @@ def matchClient(client, experts, scheduleTime):
     expertsCol = ExpertsCollection(experts.getExpertsList())
     updatedExperts = deepcopy(expertsCol)
 
-    # TO BE DELETED
-    for i in expertsCol.items():
-        i.addTravelTime()  # add the travel time to all experts in expertsCol
+    # add the travel time to all experts in expertsCol
+    expertsCol.addTravelTime()
 
 
     # update the experts collection with only the suitable experts
@@ -56,13 +55,13 @@ def matchClient(client, experts, scheduleTime):
                            client.getZone(),
                            client.getRequired_expertise())
 
+
     if expertsCol.count() == 0:  # if there are no compatible experts
         matchClientExpert = Match(False, client, 'N/A', scheduleTime)  # return denied
         return matchClientExpert, updatedExperts
     else:  # if 'if' clause is False, there is >= 1 compatible expert
         # Temporary variable bestExpert using bestExpert() method
         bestExpert = expertsCol.bestExpert()
-        #       bestExpert.addTravelTime()
 
         # create match object with client and expert:
         matchClientExpert = Match(True, client, bestExpert)
@@ -71,6 +70,7 @@ def matchClient(client, experts, scheduleTime):
         # set matchTime var to that time
         if client.getDateTime() < bestExpert.getDateTime():
             matchTime = bestExpert.getDateTime()
+
         else:
             matchTime = client.getDateTime()
 
@@ -81,7 +81,7 @@ def matchClient(client, experts, scheduleTime):
         amountEarned = bestExpert.getRate() + client.getDuration().floatHours()
 
         # timestamp in which the job ends
-        endTime = matchTime
+        endTime = deepcopy(matchTime)
         endTime.addTime(client.getDuration().getTotalMinutes())
 
 
