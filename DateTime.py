@@ -149,7 +149,7 @@ class DateTime:
                  in 'YYYY-MM-DD, HH:MM' format
         """
 
-        return self.getDate() + self.getTime()
+        return self.getDate() + ', ' + self.getTime()
 
     def __lt__(self, other):
         """
