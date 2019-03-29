@@ -105,3 +105,21 @@ class Match:
         else:
             return str(matchDate) + ', ' + str(matchTime) + ', ' +\
                 str(clientName) + ', declined'
+
+    def __eq__(self, other):
+        """
+        Compares Match timestamps (==).
+        Ensures: a Bool, True if the timestamps are the same between self and other.
+
+        """
+        if self.getTime() == other.getTime():
+            return True
+
+    def __lt__(self, other):
+        """
+        Compares Match timestamps (<).
+        Ensures: a Bool, True if the timestamps of self comes before other.
+
+        """
+        if self.getTime() < other.getTime():
+            return True

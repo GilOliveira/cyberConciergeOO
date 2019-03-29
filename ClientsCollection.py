@@ -57,9 +57,30 @@ class ClientsCollection:
         return len(self.getClientsList())
 
     def items(self):
+        """
+        Iterates each one of the Clients in the collection.
+        """
         for i in self._data:
             yield i
 
     def __str__(self):
-        return str(self._data)
+        """
+        Returns a string of all entries of the collection.
+        """
+        return str(self.getClientsList())
 
+    def __eq__(self, other):
+        """
+        Compares if both collections have the same number of items.
+        Ensures: a bool, True if self and other have the same number of items.
+        """
+        if self.count() == other.count():
+            return True
+
+    def __lt__(self, other):
+        """
+        Number of item between collections.
+        Ensures: a bool, True if self has less items than other.
+        """
+        if self.count() == other.count():
+            return True

@@ -62,7 +62,8 @@ class ExpertsCollection:
 
         compatibleExperts = []
 
-
+        # Only adding to the compatibleExperts the experts that fit the
+        # criteria in the parameters
         for i in range(self.count()):
             if self.getExpertsList()[i].getZone() == zone \
                     and self.getExpertsList()[i].getRating() >= rating \
@@ -112,6 +113,7 @@ class ExpertsCollection:
         swapped = True
         k = len(expList)
 
+        # bubble sort to organize experts by time
         while k > 0 and swapped:
             for i in range(1, k):
                 if expList[i-1].getDateTime() > expList[i].getDateTime():
@@ -127,6 +129,10 @@ class ExpertsCollection:
         """
         Returns a list to be outputted into an updated experts file.
         """
+
+        # Formatting the text to match the example in the project files.
+        # and adding \n to each line
+
         outputList = []
         for i in self._data:
             item = str(i).replace(",)", ")").replace("',", ";").replace("'","")
@@ -160,13 +166,6 @@ class ExpertsCollection:
                 i.setEarnings(i.getEarnings() + earned)
                 i.setDateTime(newTime)
 
-    def __str__(self):
-
-        strOut = ""
-        for i in self.getExpertsList():
-            strOut = strOut + str(i) + '; '
-        return strOut
-
     def addTravelTime(self):
         """
         Add travel time (60 min.) to all experts in the collection
@@ -176,3 +175,32 @@ class ExpertsCollection:
 
         for i in range(len(self.getExpertsList())):
             self._data[i].addTravelTime()
+
+    def __str__(self):
+        """
+        Sets the str version of the collection.
+        Ensures: A str with all of the experts in the collection and its attributes.
+        """
+        strOut = ""
+        for i in self.getExpertsList():
+            strOut = strOut + str(i) + '; '
+        return strOut
+
+    def __eq__(self, other):
+        """
+        Compares the number of experts (==).
+        Ensures: A Bool, True if self and other have the same number of experts.
+        """
+
+        if self.count() == other.count():
+            return True
+
+    def __lt__(self, other):
+        """
+        Compares the number of experts (<).
+        Ensures: A Bool, True if self has less experts than other.
+        """
+
+        if self.count() < other.count():
+            return True
+

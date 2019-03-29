@@ -98,6 +98,8 @@ class Expert:
         dateTime = self.getDateTime()
         dateTime.addTime(60)
 
+        # If the travel time reaches the next day,
+        # it just sets it to opening time
         if dateTime.getHour() == 8:
             dateTime.setMinute(0)
 

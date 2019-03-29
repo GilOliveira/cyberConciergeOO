@@ -25,6 +25,10 @@ def update(requests, experts, scheduleTime):
     newExperts = ExpertsCollection(experts.getExpertsList())
     scheduleOutput = Schedule()
 
+    # Running each of the clients in the requests collection parameter
+    # through the matchClient function. Updating the Experts each time,
+    # generating a Schedule collection and an updated Experts collection.
+
     for client in requests.items():
         matchResults = matchClient(client, newExperts, scheduleTime)
         scheduleOutput.addToSchedule(matchResults[0])

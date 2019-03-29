@@ -55,7 +55,11 @@ def checkErrors(fileNameExperts, fileNameClients):
     return fileOK
 
 def assign(inputExperts, inputClients):
-
+    """
+    Assigns the given experts to the given clients.
+    Requires: inputExperts (is ExpertsCollection)
+    Requires: inputClients (is ClientsCollection)
+    """
     fileInfo = filesReading.readNewFile(inputExperts)
 
     scheduleTime = fileInfo[0]

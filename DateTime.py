@@ -182,6 +182,9 @@ class DateTime:
         is older than the other.
         Ensures: bool, True if date is older then other.
         """
+
+        # Converting the time into int in the format YYYYMMDDhhmm
+
         selfNumeric = self.getYear()*100000000 +\
                       self.getMonth()*1000000 +\
                       self.getDay()*10000 +\

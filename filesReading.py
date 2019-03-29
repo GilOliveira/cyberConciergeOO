@@ -58,10 +58,16 @@ def readClients(fileName):
     for i in range(7):
         fileIn.readline()
 
+    # eliminating all the uselesss characters in the file
     for i in range(lenfile - 7):
         outputList.append(fileIn.readline().replace("*", "").replace("\n", "").split(","))
 
+    # This cycle runs through each of the entries, one at a time
     for i in outputList:
+
+        # The first conditionals make sure the program
+        # can understand the dates, even when the number
+        # starts with 0
 
         #Calculate month
         if i[2][6] == '0':
@@ -87,6 +93,7 @@ def readClients(fileName):
         else:
             minute = int(i[3][4:6])
 
+        # A temporary Client object is created with all the information
         clientTemp = Client(i[0],
                             i[1][1:],
                             DateTime(int(i[2][1:5]), month, day, hour, minute),
@@ -95,6 +102,7 @@ def readClients(fileName):
                             i[6][1:],
                             Duration(i[7][1:]))
 
+        # The Client object is then added to the inClients Collection
         inClients.addClient(clientTemp)
 
     fileIn.close()
@@ -105,7 +113,9 @@ def readClients(fileName):
 
 def readExperts(fileName):
     """
-
+    Reads the experts file and converts it in a ExpertsCollection object.
+    Ensures: ExpertsCollection object made up of Experts with the information
+             taken from the experts file.
     """
     fileIn = open(fileName, 'r')
     filetwo = open(fileName, 'r')
@@ -118,10 +128,16 @@ def readExperts(fileName):
     for i in range(7):
         fileIn.readline()
 
+    # eliminating all meaningless characters
     for i in range(lenfile - 7):
         outputList.append(fileIn.readline().replace("*", "").replace("\n", "").split(","))
 
+    # This cycle goes through all experts in the file, one at the time
     for i in outputList:
+
+        # The first conditionals make sure the program
+        # can understand the dates, even when the number
+        # starts with 0
 
         # Calculate month
         if i[5][6] == '0':
@@ -147,6 +163,7 @@ def readExperts(fileName):
         else:
             minute = int(i[6][4:6])
 
+        # A temporary Expert object is created with all the information
         expertTemp = Expert(i[0],
                             i[1][1:],
                             tuple(i[2][1:].replace(";",",").replace("(","").replace(")","").replace(" ","").split(",")),
@@ -155,6 +172,7 @@ def readExperts(fileName):
                             DateTime(int(i[5][1:5]), month, day, hour, minute),
                             float(i[7][1:]))
 
+        # The Expert object is then added to the inExperts Collection
         inExperts.addExpert(expertTemp)
 
 

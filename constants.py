@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # 2018-2019 Programação 2 (LTI)
 # Grupo 34
 # 49269 Mário Gil Oliveira
