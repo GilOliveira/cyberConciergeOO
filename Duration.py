@@ -34,7 +34,7 @@ class Duration:
         """
         """
         
-        return self.getTotalMinutes()*60
+        return self.getTotalMinutes()/60
     
     def items(self):
         """

@@ -78,7 +78,9 @@ def matchClient(client, experts, scheduleTime):
         matchClientExpert.setTime(matchTime)
 
         # Amount earned by the expert
-        amountEarned = bestExpert.getRate() + client.getDuration().floatHours()
+        amountEarned = bestExpert.getRate() * client.getDuration().floatHours()
+
+        print(amountEarned)
 
         # timestamp in which the job ends
         endTime = deepcopy(matchTime)
