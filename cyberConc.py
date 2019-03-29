@@ -17,17 +17,19 @@ def assign(inputExperts, inputClients):
     fileInfo = filesReading.readNewFile(inputExperts)
 
     scheduleTime = fileInfo[0]
+    scheduleTime.addTime(30)
+
     company = fileInfo[1]
 
     inExperts = filesReading.readExperts(inputExperts)
     inRequests = filesReading.readClients(inputClients)
 
-    outScheduling = scheduling.update(inRequests, inExperts)
+    outScheduling = scheduling.update(inRequests, inExperts, scheduleTime)
 
     newSchedule = outScheduling[0]
     newExperts = outScheduling[1]
 
-    scheduleTime.addTime(30)
+
     scheduleName = filesWriting.newFile(scheduleTime, 'schedule', company)
     filesWriting.writeSchedule(scheduleName, newSchedule)
 

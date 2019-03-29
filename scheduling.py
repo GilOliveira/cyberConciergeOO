@@ -10,7 +10,7 @@ from Match import Match
 from Expert import Expert
 from Schedule import Schedule
 
-def update(requests, experts):
+def update(requests, experts, scheduleTime):
     """
     Runs the matching function for each client request.
     Requires: requests (ClientsCollection), the collection of clients
@@ -26,7 +26,7 @@ def update(requests, experts):
     scheduleOutput = Schedule()
 
     for client in requests.items():
-        matchResults = matchClient(client, newExperts)
+        matchResults = matchClient(client, newExperts, scheduleTime)
         scheduleOutput.addToSchedule(matchResults[0])
         newExperts = matchResults[1]
 
@@ -34,7 +34,7 @@ def update(requests, experts):
     return scheduleOutput, newExperts
 
 
-def matchClient(client, experts):
+def matchClient(client, experts, scheduleTime):
     """
     Matches client with one expert from the
     Requires: client is Client
@@ -57,11 +57,12 @@ def matchClient(client, experts):
                            client.getRequired_expertise())
 
     if expertsCol.count() == 0:  # if there are no compatible experts
-        matchClientExpert = Match(False, client, 'N/A', client.getDateTime())  # return denied
+        matchClientExpert = Match(False, client, 'N/A', scheduleTime)  # return denied
         return matchClientExpert, updatedExperts
     else:  # if 'if' clause is False, there is >= 1 compatible expert
         # Temporary variable bestExpert using bestExpert() method
         bestExpert = expertsCol.bestExpert()
+        #       bestExpert.addTravelTime()
 
         # create match object with client and expert:
         matchClientExpert = Match(True, client, bestExpert)
