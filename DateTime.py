@@ -57,7 +57,7 @@ class DateTime:
         if self.getMinute() < 10:
             minuteStr = '0' + minuteStr
 
-        return hourStr + 'h' + minuteStr
+        return hourStr + ':' + minuteStr
 
   
     def getYear(self):
@@ -119,7 +119,7 @@ class DateTime:
         if self.getMinute() < 10:
             minuteStr = '0' + minuteStr
 
-        return hourStr + '' + minuteStr
+        return hourStr + 'h' + minuteStr
              
     def addTime(self, increment):
         """
@@ -206,10 +206,10 @@ class DateTime:
         Ensures: bool, True both timestamps are the same.
         """
         if self.getYear() == other.getYear() and\
-            self.getMonth() == other.getMonth() and\
-            self.getDay() == other.getDay() and\
-            self.getHour() == other.getHour() and\
-            self.getMinute() == other.getMinute():
+           self.getMonth() == other.getMonth() and\
+           self.getDay() == other.getDay() and\
+           self.getHour() == other.getHour() and\
+           self.getMinute() == other.getMinute():
             return True
         else:
             return False

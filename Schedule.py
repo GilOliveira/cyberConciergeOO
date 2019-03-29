@@ -43,7 +43,7 @@ class Schedule:
         # Bubble sort algorithm - sorting by time (ascending)
         while k > 0 and swapped:
             for i in range(1, k):
-                if list1[i - 1].getTime() > list1[i].getTime():
+                if list1[i - 1].getClient().getName() > list1[i].getClient().getName():
                     swapItem = list1[i]
                     list1[i] = list1[i - 1]
                     list1[i - 1] = swapItem
@@ -53,7 +53,7 @@ class Schedule:
         swapped = True
         k = len(list2)
 
-        # Bubble sort algorithm - sorting by time (ascending)
+        # Bubble sort algorithm - sorting by time, then by name (ascending)
         while k > 0 and swapped:
             for i in range(1, k):
                 if list2[i - 1].getTime() > list2[i].getTime():
@@ -61,7 +61,14 @@ class Schedule:
                     list2[i] = list2[i - 1]
                     list2[i - 1] = swapItem
                     swapped = True
+                elif list2[i - 1].getTime() == list2[i].getTime():
+                    if list2[i - 1].getClient().getName() > list2[i].getClient().getName():
+                        swapItem = list2[i]
+                        list2[i] = list2[i - 1]
+                        list2[i - 1] = swapItem
+                        swapped = True
             k -= 1
+
 
         self.setList(list1+list2)
 

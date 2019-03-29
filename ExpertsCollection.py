@@ -129,7 +129,8 @@ class ExpertsCollection:
         """
         outputList = []
         for i in self._data:
-            outputList.append(str(i) + ' \n')
+            item = str(i).replace(",)", ")").replace("',", ";").replace("'","")
+            outputList.append(item + ' \n')
 
         return outputList
 

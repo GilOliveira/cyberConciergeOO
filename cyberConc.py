@@ -11,7 +11,7 @@ import filesWriting
 from DateTime import DateTime
 import filesReading
 
-def checkError(fileNameExperts, fileNameClients):
+def checkErrors(fileNameExperts, fileNameClients):
     """Checks to see if the inputFiles are valid. Checks if the headers of the experts
     and clients files are equal and if the header of a file matches its name
     Requires: fileNameExperts, fileNameClients are str, with the names
@@ -19,25 +19,40 @@ def checkError(fileNameExperts, fileNameClients):
     following the format indicated in the project.
     Ensures: return True if the files are valid and False if not"""
 
+    fileOK = True
+
     # Tests if the clients match between Client and Expert
-    headExp = filesReading.readNewFile(fileNameExperts)
-    headCli = filesReading.readNewFile(fileNameClients)
-    if headCli[0:3] != headExp[0:3]:
+    expInfo = filesReading.readNewFile(fileNameExperts)
+    cliInfo = filesReading.readNewFile(fileNameClients)
+    if expInfo[0] != cliInfo[0] or expInfo[1] != cliInfo[1]:
         print("Error in input files: inconsistent files",
-              fileNameExperts,"and",fileNameClients)
-        return False
+              fileNameExperts, "and", fileNameClients)
+        fileOK = False
 
 
     # tests if the header matches the file name
     # ex:2019y03m20clients12h30.txt = ('2019-02-20', '12:30', 'iCageDoree', 'Clients')   <<< deve dar erro neste exemplo
-    for i in sys.argv[1:]:
-        if i.replace("y","-").replace("m","-")[0:10] != (filesReading.readNewFile(i))[0] or \
-           str(i[10:17]) != filesReading.readNewFile(i)[3].lower() or \
-           str(i.replace("h",":")[17:22]) != filesReading.readNewFile(i)[1]:
-           print("Error in input file: inconsistent name and header in file", i)
-           return False
-        else:
-            return True
+
+    fileOK = True
+
+    if int(fileNameExperts[0:4]) != expInfo[0].getYear() or\
+            int(fileNameExperts[5:7]) != expInfo[0].getMonth() or\
+            int(fileNameExperts[8:10]) != expInfo[0].getDay() or\
+            int(fileNameExperts[17:19]) != expInfo[0].getHour() or\
+            int(fileNameExperts[20:22]) != expInfo[0].getMinute():
+        print("Error in input file: inconsistent name and header in file", fileNameExperts)
+        fileOK = False
+
+    if int(fileNameClients[0:4]) != cliInfo[0].getYear() or\
+            int(fileNameClients[5:7]) != cliInfo[0].getMonth() or\
+            int(fileNameClients[8:10]) != cliInfo[0].getDay() or\
+            int(fileNameClients[17:19]) != cliInfo[0].getHour() or\
+            int(fileNameClients[20:22]) != cliInfo[0].getMinute():
+        print("Error in input file: inconsistent name and header in file", fileNameClients)
+        fileOK = False
+
+
+    return fileOK
 
 def assign(inputExperts, inputClients):
 

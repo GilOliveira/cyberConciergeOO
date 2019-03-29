@@ -35,7 +35,7 @@ def readNewFile(fileName):
         int(fullTime[3:5]))
     file.readline()  # Ignore fifth line
     company = file.readline().replace("\n", "")
-    scope = file.readline().replace("\n", "").replace(":","")
+    scope = file.readline().replace("\n", "").replace(":", "")
     file.close()
 
     return (timestamp, company, scope)
