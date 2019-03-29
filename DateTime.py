@@ -57,7 +57,7 @@ class DateTime:
         if self.getMinute() < 10:
             minuteStr = '0' + minuteStr
 
-        return hourStr + ':' + minuteStr
+        return hourStr + 'h' + minuteStr
 
   
     def getYear(self):
@@ -95,6 +95,31 @@ class DateTime:
         """
         return self._minute
 
+    def getTitleDate(self):
+
+        monthStr = str(self.getMonth())
+        dayStr = str(self.getDay())
+
+        if self.getMonth() < 10:
+            monthStr = '0' + monthStr
+
+        if self.getDay() < 10:
+            dayStr = '0' + dayStr
+
+        return str(self.getYear()) + 'y' + monthStr + 'm' + dayStr
+
+    def getTitleHours(self):
+
+        hourStr = str(self.getHour())
+        minuteStr = str(self.getMinute())
+
+        if self.getHour() < 10:
+            hourStr = '0' + hourStr
+
+        if self.getMinute() < 10:
+            minuteStr = '0' + minuteStr
+
+        return hourStr + '' + minuteStr
              
     def addTime(self, increment):
         """
